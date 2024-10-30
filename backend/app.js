@@ -21,6 +21,26 @@ mongoose
 app.post("/api/doconvertion", async (req, res) => {
   const newConvertion = new Convertion(req.body);
   try {
+    const monedaFactores = MonedasFactores.findOne(
+      (moneda) =>
+        moneda.monedaOrigen === newConvertion.monedaOrigen &&
+        moneda.monedaDestino === newConvertion.monedaDestino
+    );
+
+    if (monedaFactores === null || monedaFactores === undefined)
+      res.status(400).json({
+        message:
+          "No Existen Factores/Tasas de Conversion para la moneda origen: " +
+          newConvertion.monedaDestino,
+      });
+
+    const convertionResult =
+      monedaFactores.operacion === "*"
+        ? monto * monedaFactores.FactorTasaCambio
+        : monto / monedaFactores.FactorTasaCambio;
+
+    newConvertion.resultado = convertionResult;
+
     const saveConvertion = await newConvertion.save();
     res.status(201).json(saveConvertion);
   } catch (error) {

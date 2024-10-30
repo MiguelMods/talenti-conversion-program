@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const MonedasSchema = new mongoose.Schema({
   codigo: {
-    type: Number,
+    type: String,
     required: true,
   },
   descripcion: {
-    type: Number,
+    type: String,
     required: true,
   },
   estatus: {
