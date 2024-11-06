@@ -11,8 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "backend": "file:",
     "cors": "^2.8.5",
     "express": "^4.21.1",
     "mongoose": "^8.7.3"
+  },
+  "eslintConfig": {
+    "extends": "standard"
   }
 }
