@@ -1,0 +1,47 @@
+GET http://localhost:3000/api/test
+
+###
+GET http://localhost:3000/api
+
+### ConvertionRoutes do a Convertion and return a result
+POST  http://localhost:3000/api/convertion
+Content-Type: application/json
+
+{
+    "amount": 100,
+    "originCoinId": 1,
+    "destinyCoinId": 2 
+}
+
+### return a convertion using ID
+GET http://localhost:3000/api/convertion/1
+
+### return a list of convertions
+GET http://localhost:3000/api/convertion
+
+### return a list of coins
+GET http://localhost:3000/api/coin
+
+### return a coin using id
+GET http://localhost:3000/api/coin/1
+
+### add a new coin
+POST http://localhost:3000/api/coin
+Content-Type: application/json
+
+{
+    "name": "Peso Dominicano",
+    "code": "DOP",
+    "active": true
+}
+
+### update a existing a coin
+PUT http://localhost:3000/api/coin
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "Peso Dominicano",
+    "code": "DOP",
+    "active": true
+}
